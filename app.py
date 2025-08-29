@@ -161,7 +161,7 @@ with colA:
     st.subheader(f"{mode} Progress")
     st.caption(f"{start.strftime('%b %d, %Y')} → {(end - timedelta(seconds=1)).strftime('%b %d, %Y')} (America/Chicago)")
     # Hi-res base render + overlay of PNG assets
-img = make_rocket_image(progress, width=1400, height=1800)
+img = make_rocket_image(progress, width=2800, height=3600)
 st.image(img, use_container_width=True)
 
 from PIL import Image
