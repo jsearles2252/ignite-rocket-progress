@@ -21,7 +21,9 @@ def load_data(csv_url: Optional[str], uploaded_file):
         df = pd.read_csv(uploaded_file)
     elif csv_url:
         try:
-            df = pd.read_csv(csv_url)
+            # cache-buster so Google doesn't serve an old published CSV
+buster = ("&" if "?" in csv_url else "?") + f"_cb={int(time.time())}"
+df = pd.read_csv(csv_url + buster)
         except Exception:
             st.warning("Couldn't load the provided CSV URL. Falling back to sample data.")
             df = pd.read_csv("sample_data.csv")
