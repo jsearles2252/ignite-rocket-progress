@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 import streamlit as st
+import time
 from typing import Optional
 ASSET_ROCKET = "assets/rocket_hd.png"
 ASSET_MOON   = "assets/moon_hd.png"
