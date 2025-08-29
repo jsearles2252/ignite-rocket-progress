@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 import streamlit as st
+from typing import Optional
 
 st.set_page_config(page_title="IGNITE Rocket Progress", page_icon="🚀", layout="wide")
 
@@ -12,7 +13,7 @@ TZ = pytz.timezone("America/Chicago")
 
 DEFAULT_WEIGHTS = {"call": 1, "demo": 3, "pilot": 6, "deal": 12}
 
-def load_data(csv_url: str | None, uploaded_file):
+def load_data(csv_url: Optional[str], uploaded_file):
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
     elif csv_url:
