@@ -157,7 +157,30 @@ colA, colB = st.columns([1.2, 1])
 with colA:
     st.subheader(f"{mode} Progress")
     st.caption(f"{start.strftime('%b %d, %Y')} → {(end - timedelta(seconds=1)).strftime('%b %d, %Y')} (America/Chicago)")
-    img = make_rocket_image(progress)
+    # Hi-res base render + overlay of PNG assets
+img = make_rocket_image(progress, width=1400, height=1800)
+
+from PIL import Image
+base = img.convert("RGBA")
+try:
+    # Moon at the top-center
+    moon = Image.open(ASSET_MOON).convert("RGBA").resize((280, 280))
+    base.alpha_composite(moon, (base.width // 2 - moon.width // 2, 80))
+except Exception:
+    pass
+
+try:
+    # Rocket position depends on progress
+    rocket = Image.open(ASSET_ROCKET).convert("RGBA").resize((300, 460))
+    ground_h = 80
+    y_bottom = base.height - ground_h - rocket.height
+    y_top = 80 + 280 + 20  # just below the moon
+    y_pos = int(y_bottom - (y_bottom - y_top) * float(progress))
+    base.alpha_composite(rocket, (base.width // 2 - rocket.width // 2, y_pos))
+    img = base.convert("RGB")
+except Exception:
+    pass
+
     st.image(img, use_container_width=True)
     st.progress(progress, text=f"{int(progress*100)}%")
     st.metric("Total points", f"{total_points:,}")
