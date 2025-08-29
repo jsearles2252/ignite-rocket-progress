@@ -6,6 +6,8 @@ import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 import streamlit as st
 from typing import Optional
+ASSET_ROCKET = "assets/rocket_hd.png"
+ASSET_MOON   = "assets/moon_hd.png"
 
 st.set_page_config(page_title="IGNITE Rocket Progress", page_icon="🚀", layout="wide")
 
