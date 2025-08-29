@@ -159,6 +159,7 @@ with colA:
     st.caption(f"{start.strftime('%b %d, %Y')} → {(end - timedelta(seconds=1)).strftime('%b %d, %Y')} (America/Chicago)")
     # Hi-res base render + overlay of PNG assets
 img = make_rocket_image(progress, width=1400, height=1800)
+st.image(img, use_container_width=True)
 
 from PIL import Image
 base = img.convert("RGBA")
