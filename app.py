@@ -10,7 +10,7 @@ from typing import Optional
 ASSET_ROCKET = "assets/rocket_hd.png"
 ASSET_MOON   = "assets/moon_hd.png"
 
-st.set_page_config(page_title="IGNITE Rocket Progress", page_icon="🚀", layout="wide")
+st.set_page_config(page_title="IGNITE Rocket Sprint", page_icon="🚀", layout="wide")
 
 TZ = pytz.timezone("America/Chicago")
 
