@@ -154,7 +154,7 @@ start, end = period_bounds(mode)
 dfp = score_df(df, weights, start, end)
 total_points, progress = compute_progress(dfp, goal_points)
 
-st.title("🚀 IGNITE Rocket Progress")
+st.title("IGNITE Sales Sprint")
 colA, colB = st.columns([1.2, 1])
 
 with colA:
